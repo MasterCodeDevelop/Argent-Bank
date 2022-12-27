@@ -12,8 +12,8 @@ export default function SignIn() {
         </h1>
         <form className="auth-form">
           <div className="input-wrapper">
-            <label htmlFor="username">Username</label>
-            <input type="text" id="username" />
+            <label htmlFor="email">Email</label>
+            <input type="email" id="email" />
           </div>
           <div className="input-wrapper">
             <label htmlFor="password">Password</label>

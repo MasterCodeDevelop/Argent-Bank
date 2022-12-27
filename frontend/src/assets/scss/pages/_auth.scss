@@ -54,6 +54,9 @@
       label {
         margin-left: 0.25rem;
       }
+      input:checked ~ label {
+        font-weight: bold;
+      }
     }
     .input-wrapper {
       display: flex;
@@ -62,6 +65,8 @@
       margin-bottom: 1rem;
       label {
         font-weight: bold;
+        color: rgba(#000, 0.6);
+        padding-bottom: 3px;
       }
       input {
         padding: 5px;
