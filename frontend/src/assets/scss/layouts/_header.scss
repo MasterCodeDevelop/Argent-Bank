@@ -1,0 +1,48 @@
+/*====================== header ======================*/
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 20px;
+
+  &-logo {
+    display: flex;
+    align-items: center;
+    img {
+      max-width: 100%;
+      width: 200px;
+      transition: opacity 0.5s;
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+  &-nav {
+    a {
+      text-decoration: none;
+      margin-right: 0.5rem;
+      font-weight: bold;
+      color: inherit;
+      transition: all 0.5s;
+      &:hover {
+        text-decoration: underline;
+      }
+      &.active {
+        color: #42b983;
+      }
+    }
+  }
+}
+.sr-only {
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px) !important; /* 1 */
+  -webkit-clip-path: inset(50%) !important;
+  clip-path: inset(50%) !important; /* 2 */
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  white-space: nowrap !important; /* 3 */
+}
