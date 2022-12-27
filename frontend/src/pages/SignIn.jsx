@@ -4,13 +4,13 @@ import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 
 export default function SignIn() {
   return (
-    <main id="signin" className="signin">
-      <section className="signin-content">
-        <h1 className="signin-title">
-          <FontAwesomeIcon icon={faUserCircle} className="signin-icon" />
+    <main id="signin" className="auth">
+      <section className="auth-content">
+        <h1 className="auth-title">
+          <FontAwesomeIcon icon={faUserCircle} className="auth-icon" />
           Sign In
         </h1>
-        <form className="signin-form">
+        <form className="auth-form">
           <div className="input-wrapper">
             <label htmlFor="username">Username</label>
             <input type="text" id="username" />
@@ -24,7 +24,7 @@ export default function SignIn() {
             <label htmlFor="remember-me">Remember me</label>
           </div>
 
-          <button className="signin-button">Sign In</button>
+          <button className="auth-button">Sign In</button>
         </form>
       </section>
     </main>
