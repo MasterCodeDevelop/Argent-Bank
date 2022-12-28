@@ -18,3 +18,24 @@ export function register(firstName, lastName, email, password) {
     password,
   });
 }
+
+/**
+ * Calls a post API request to connect
+ * @param {String} email
+ * @param {String} password
+ * @returns {JSON} responsee API
+ */
+export function login(email, password) {
+  return axios
+    .post(API_URL + 'user/login', {
+      email,
+      password,
+    })
+    .then((response) => {
+      if (response.data.accessToken) {
+        localStorage.setItem('user', JSON.stringify(response.data));
+      }
+
+      return response.data;
+    });
+}
