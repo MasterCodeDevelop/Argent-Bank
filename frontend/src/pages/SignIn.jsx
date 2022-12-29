@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { login } from '../slices/auth';
@@ -13,7 +13,6 @@ export default function Login() {
 
   const [loading, setLoading] = useState(false);
 
-  const { isLoggedIn } = useSelector((state) => state.auth);
   const { message } = useSelector((state) => state.message);
 
   const dispatch = useDispatch();
@@ -41,10 +40,6 @@ export default function Login() {
       .then(() => navigate('/profil'))
       .catch(() => setLoading(false));
   };
-
-  if (isLoggedIn) {
-    return <Navigate to="/user" />;
-  }
 
   return (
     <main id="signin" className="auth">

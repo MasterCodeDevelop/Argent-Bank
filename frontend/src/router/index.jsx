@@ -5,19 +5,19 @@ import Footer from '../layouts/Footer';
 import Home from '../pages/Home';
 import SignUp from '../pages/SignUp';
 import SignIn from '../pages/SignIn';
-import User from '../pages/User';
+import Profil from '../pages/Profil';
 import Error from '../pages/Error';
 import { useSelector } from 'react-redux';
 
 export default function Router() {
-  const { user } = useSelector((state) => state.auth);
+  const { token } = useSelector((state) => state.auth);
 
   return (
     <BrowserRouter>
       <Header />
       <Routes>
-        {user ? (
-          <Route path="/profil" element={<User />} />
+        {token ? (
+          <Route path="/profil" element={<Profil />} />
         ) : (
           <>
             <Route path="/sign-up" element={<SignUp />} />

@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { setMessage } from './message';
 import * as AuthService from '../services/auth.service';
 
-const user = JSON.parse(localStorage.getItem('user'));
+const token = localStorage.getItem('token');
 
 /**
  * Create new user
@@ -40,7 +40,7 @@ export const login = createAsyncThunk(
   async ({ email, password }, thunkAPI) => {
     try {
       const data = await AuthService.login(email, password);
-      return { user: data };
+      return { token: data.body.token };
     } catch (error) {
       const message =
         (error.response &&
@@ -54,9 +54,9 @@ export const login = createAsyncThunk(
   }
 );
 
-const initialState = user
-  ? { isLoggedIn: true, user }
-  : { isLoggedIn: false, user: null };
+const initialState = token
+  ? { isLoggedIn: true, token }
+  : { isLoggedIn: false, token };
 
 // Create slice
 const authSlice = createSlice({
@@ -71,11 +71,11 @@ const authSlice = createSlice({
     },
     [login.fulfilled]: (state, action) => {
       state.isLoggedIn = true;
-      state.user = action.payload.user;
+      state.token = action.payload.token;
     },
     [login.rejected]: (state) => {
       state.isLoggedIn = false;
-      state.user = null;
+      state.token = null;
     },
   },
 });
