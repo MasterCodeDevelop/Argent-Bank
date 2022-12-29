@@ -8,7 +8,7 @@ import * as Yup from 'yup';
 import { login } from '../slices/auth';
 import { clearMessage } from '../slices/message';
 
-const Login = () => {
+export default function Login() {
   let navigate = useNavigate();
 
   const [loading, setLoading] = useState(false);
@@ -38,13 +38,8 @@ const Login = () => {
 
     dispatch(login({ email, password }))
       .unwrap()
-      .then(() => {
-        navigate('/user');
-        window.location.reload();
-      })
-      .catch(() => {
-        setLoading(false);
-      });
+      .then(() => navigate('/profil'))
+      .catch(() => setLoading(false));
   };
 
   if (isLoggedIn) {
@@ -122,6 +117,4 @@ const Login = () => {
       </div>
     </main>
   );
-};
-
-export default Login;
+}
