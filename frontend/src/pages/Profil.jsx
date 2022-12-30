@@ -1,6 +1,7 @@
 import React from 'react';
 import { updateUser } from '../slices/user';
 import { useSelector, useDispatch } from 'react-redux';
+import Loading from '../components/Loading';
 
 export default function Profil() {
   const dispatch = useDispatch();
@@ -14,8 +15,7 @@ export default function Profil() {
   }, [token, user]);
   return (
     <main id="profil" className="profil">
-      Profil page
-      {user ? <>USER:{user.firstName}</> : <>Loading</>}
+      {!user ? <Loading /> : <>USER:{user.firstName}</>}
     </main>
   );
 }

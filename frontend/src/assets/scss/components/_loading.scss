@@ -1,0 +1,14 @@
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &-content {
+    width: 25%;
+  }
+  @media (orientation: landscape) {
+    height: 80vh;
+  }
+  @media (orientation: portrait) {
+    height: 80vh;
+  }
+}
