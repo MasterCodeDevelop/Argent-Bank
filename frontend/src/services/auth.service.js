@@ -39,3 +39,9 @@ export function login(email, password) {
       return response.data;
     });
 }
+/**
+ * Logout remove localStorege token
+ */
+export function logout() {
+  localStorage.removeItem('token');
+}

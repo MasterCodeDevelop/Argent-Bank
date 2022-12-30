@@ -6,12 +6,15 @@ import {
   faUserCircle,
   faSignIn,
   faUser,
+  faSignOut,
 } from '@fortawesome/free-solid-svg-icons';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { logout } from '../slices/auth';
 
 export default function Header() {
   const { token } = useSelector((state) => state.auth);
   const { user } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
 
   return (
     <header className="header">
@@ -21,9 +24,15 @@ export default function Header() {
       </Link>
       <nav className="header-nav">
         {token ? (
-          <NavLink to="./profil">
-            <FontAwesomeIcon icon={faUser} /> {user ? user.firstName : ''}
-          </NavLink>
+          <>
+            <NavLink to="./profil">
+              <FontAwesomeIcon icon={faUser} /> {user ? user.firstName : ''}
+            </NavLink>
+            <Link to="/" onClick={() => dispatch(logout())}>
+              <FontAwesomeIcon icon={faSignOut} />
+              Sign Out
+            </Link>
+          </>
         ) : (
           <>
             <NavLink to="./sign-up">
