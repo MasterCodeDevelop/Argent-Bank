@@ -10,7 +10,8 @@ import {
 import { useSelector } from 'react-redux';
 
 export default function Header() {
-  const { user } = useSelector((state) => state.auth);
+  const { token } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.user);
 
   return (
     <header className="header">
@@ -19,9 +20,9 @@ export default function Header() {
         <h1 className="sr-only">Argent Bank</h1>
       </Link>
       <nav className="header-nav">
-        {user ? (
+        {token ? (
           <NavLink to="./profil">
-            <FontAwesomeIcon icon={faUser} /> Profile
+            <FontAwesomeIcon icon={faUser} /> {user ? user.firstName : ''}
           </NavLink>
         ) : (
           <>
