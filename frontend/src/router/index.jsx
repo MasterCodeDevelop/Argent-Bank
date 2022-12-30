@@ -8,7 +8,7 @@ import SignIn from '../pages/SignIn';
 import Profile from '../pages/Profile';
 import Error from '../pages/Error';
 import { useSelector, useDispatch } from 'react-redux';
-import { updateUser } from '../slices/user';
+import { getUser } from '../slices/user';
 
 export default function Router() {
   const dispatch = useDispatch(),
@@ -16,7 +16,7 @@ export default function Router() {
     { user } = useSelector((state) => state.user);
 
   React.useEffect(() => {
-    if (token && !user) dispatch(updateUser({ token }));
+    if (token && !user) dispatch(getUser({ token }));
   }, [token, user]);
 
   return (
