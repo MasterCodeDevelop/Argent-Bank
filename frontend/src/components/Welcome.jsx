@@ -4,19 +4,21 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { clearMessage } from '../slices/message';
 import { useSelector, useDispatch } from 'react-redux';
+import { updateUser } from '../slices/user';
 
 function Welcome({ firstName, lastName }) {
-  const [edit, setEdit] = useState(false);
-  const initialValues = {
-    firstName: '',
-    lastName: '',
-  };
-  const [successful, setSuccessful] = useState(false);
-  const { message } = useSelector((state) => state.message);
-  const dispatch = useDispatch();
+  const [edit, setEdit] = useState(false),
+    initialValues = {
+      firstName: '',
+      lastName: '',
+    },
+    { token } = useSelector((state) => state.auth),
+    dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(clearMessage());
   }, [dispatch]);
+
   const validationSchema = Yup.object().shape({
     firstName: Yup.string()
       .test(
@@ -38,7 +40,15 @@ function Welcome({ firstName, lastName }) {
   const handleEdit = (formValue) => {
     const { firstName, lastName } = formValue;
     console.log({ firstName, lastName });
-    setSuccessful(false);
+
+    dispatch(updateUser({ token, firstName, lastName }))
+      .unwrap()
+      .then(() => {
+        setEdit(false);
+      })
+      .catch(() => {
+        setEdit(true);
+      });
   };
   return (
     <section className="welcome">
@@ -60,58 +70,44 @@ function Welcome({ firstName, lastName }) {
             onSubmit={handleEdit}
           >
             <Form>
-              {!successful && (
-                <>
-                  <div className="form-group">
-                    <Field
-                      name="firstName"
-                      type="text"
-                      placeholder={firstName}
-                      className="form-control"
-                    />
-                    <ErrorMessage
-                      name="firstName"
-                      component="div"
-                      className="alert alert-danger"
-                    />
-                  </div>
-                  <div className="form-group">
-                    <Field
-                      name="lastName"
-                      type="text"
-                      placeholder={lastName}
-                      className="form-control"
-                    />
-                    <ErrorMessage
-                      name="lastName"
-                      component="div"
-                      className="alert alert-danger"
-                    />
-                  </div>
-                  <div className="form-group">
-                    {message && (
-                      <div className="alert alert-danger" role="alert">
-                        {message}
-                      </div>
-                    )}
-                    <div className="row">
-                      <button
-                        type="submit"
-                        className="btn btn-outline-secondary"
-                      >
-                        Save
-                      </button>
-                      <button
-                        type="reset"
-                        onClick={() => setEdit(false)}
-                        className="btn btn-outline-secondary"
-                      >
-                        Cancel
-                      </button>
-                    </div>
-                  </div>
-                </>
-              )}
+              <div className="form-group">
+                <Field
+                  name="firstName"
+                  type="text"
+                  placeholder={firstName}
+                  className="form-control"
+                />
+                <ErrorMessage
+                  name="firstName"
+                  component="div"
+                  className="alert alert-danger"
+                />
+              </div>
+              <div className="form-group">
+                <Field
+                  name="lastName"
+                  type="text"
+                  placeholder={lastName}
+                  className="form-control"
+                />
+                <ErrorMessage
+                  name="lastName"
+                  component="div"
+                  className="alert alert-danger"
+                />
+              </div>
+              <div className="form-group row">
+                <button type="submit" className="btn btn-outline-secondary">
+                  Save
+                </button>
+                <button
+                  type="reset"
+                  onClick={() => setEdit(false)}
+                  className="btn btn-outline-secondary"
+                >
+                  Cancel
+                </button>
+              </div>
             </Form>
           </Formik>
         </>

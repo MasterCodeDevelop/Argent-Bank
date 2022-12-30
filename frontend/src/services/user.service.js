@@ -14,3 +14,17 @@ export function getUser(token) {
     { headers: { authorization: `Bearer ${token}` } }
   );
 }
+
+/**
+ * Update the firstName and the lastName
+ * @param {String} firstName
+ * @param {Strinf} lastName
+ * @returns {JSON} response api
+ */
+export function updateUser(token, firstName, lastName) {
+  return axios.put(
+    `${API_URL}user/profile`,
+    { firstName, lastName },
+    { headers: { authorization: `Bearer ${token}` } }
+  );
+}

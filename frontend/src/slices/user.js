@@ -15,6 +15,22 @@ export const getUser = createAsyncThunk('user', async ({ token }, thunkAPI) => {
   }
 });
 
+/**
+ * update user firstName and lastName
+ */
+export const updateUser = createAsyncThunk(
+  'user',
+  async ({ token, firstName, lastName }, thunkAPI) => {
+    try {
+      const data = await userService.updateUser(token, firstName, lastName);
+      return { user: data.data.body };
+    } catch (error) {
+      thunkAPI.dispatch(logout());
+      return thunkAPI.rejectWithValue();
+    }
+  }
+);
+
 const initialState = { user: null };
 
 // Create slice
@@ -26,6 +42,12 @@ const userSlice = createSlice({
       state.user = action.payload.user;
     },
     [getUser.rejected]: (state) => {
+      state.user = null;
+    },
+    [updateUser.fulfilled]: (state, action) => {
+      state.user = action.payload.user;
+    },
+    [updateUser.rejected]: (state) => {
       state.user = null;
     },
   },
