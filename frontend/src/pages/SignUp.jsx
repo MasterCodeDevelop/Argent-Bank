@@ -144,20 +144,6 @@ export default function Register() {
                     className="alert alert-danger"
                   />
                 </div>
-                <div className="form-group remember">
-                  <Field
-                    name="remember"
-                    type="checkbox"
-                    placeholder="remember"
-                    className="form-control"
-                  />
-                  <label htmlFor="remember">Remember me</label>
-                  <ErrorMessage
-                    name="remember"
-                    component="div"
-                    className="alert alert-danger"
-                  />
-                </div>
                 <div className="form-group">
                   {message && (
                     <div className="alert alert-danger" role="alert">

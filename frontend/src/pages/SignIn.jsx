@@ -24,6 +24,7 @@ export default function Login() {
   const initialValues = {
     email: '',
     password: '',
+    remember: false,
   };
 
   const validationSchema = Yup.object().shape({
@@ -32,10 +33,10 @@ export default function Login() {
   });
 
   const handleLogin = (formValue) => {
-    const { email, password } = formValue;
+    const { email, password, remember } = formValue;
     setLoading(true);
 
-    dispatch(login({ email, password }))
+    dispatch(login({ email, password, remember }))
       .unwrap()
       .then(() => navigate('/profil'))
       .catch(() => setLoading(false));

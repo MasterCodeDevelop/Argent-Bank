@@ -25,18 +25,19 @@ export function register(firstName, lastName, email, password) {
  * @param {String} password
  * @returns {JSON} responsee API
  */
-export function login(email, password) {
+export function login(email, password, remember) {
   return axios
     .post(API_URL + 'user/login', {
       email,
       password,
     })
     .then((response) => {
-      if (response.data.accessToken) {
-        localStorage.setItem('user', JSON.stringify(response.data));
+      const token = response.data.body.token;
+      if (remember && token) {
+        localStorage.setItem('token', token);
       }
 
-      return response.data;
+      return token;
     });
 }
 /**
