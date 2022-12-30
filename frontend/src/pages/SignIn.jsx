@@ -38,7 +38,7 @@ export default function Login() {
 
     dispatch(login({ email, password, remember }))
       .unwrap()
-      .then(() => navigate('/profil'))
+      .then(() => navigate('/profile'))
       .catch(() => setLoading(false));
   };
 

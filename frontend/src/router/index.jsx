@@ -5,7 +5,7 @@ import Footer from '../layouts/Footer';
 import Home from '../pages/Home';
 import SignUp from '../pages/SignUp';
 import SignIn from '../pages/SignIn';
-import Profil from '../pages/Profil';
+import Profile from '../pages/Profile';
 import Error from '../pages/Error';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateUser } from '../slices/user';
@@ -24,7 +24,7 @@ export default function Router() {
       <Header />
       <Routes>
         {token ? (
-          <Route path="/profil" element={<Profil />} />
+          <Route path="/profile" element={<Profile />} />
         ) : (
           <>
             <Route path="/sign-up" element={<SignUp />} />
