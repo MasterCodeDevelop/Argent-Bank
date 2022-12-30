@@ -9,6 +9,7 @@
 @import './components/alerts';
 @import './components/buttons';
 @import './components/loading';
+@import './components/welcome';
 
 /*|||||||||||||||||||||| LAYOUTS ||||||||||||||||||||||*/
 @import './layouts/header';
@@ -18,3 +19,4 @@
 @import './pages/home';
 @import './pages/error';
 @import './pages/auth';
+@import './pages/profile';

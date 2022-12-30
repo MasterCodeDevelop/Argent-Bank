@@ -22,4 +22,14 @@
     background-color: $clr-primary;
     border-color: $clr-primary;
   }
+  &-secondary {
+    color: #fff;
+    background-color: $clr-secondary;
+    border-color: $clr-secondary;
+  }
+  &-outline-secondary {
+    color: $clr-secondary;
+    background-color: #fff;
+    border-color: $clr-secondary;
+  }
 }
