@@ -1,17 +1,21 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { getUser } from '../services/user.service';
-
+import { logout } from './auth';
 /**
  * get user data
  */
-export const updateUser = createAsyncThunk('user', async ({ token }) => {
-  try {
-    const data = await getUser(token);
-    return { user: data.data.body };
-  } catch (error) {
-    console.log(error);
+export const updateUser = createAsyncThunk(
+  'user',
+  async ({ token }, thunkAPI) => {
+    try {
+      const data = await getUser(token);
+      return { user: data.data.body };
+    } catch (error) {
+      thunkAPI.dispatch(logout());
+      return thunkAPI.rejectWithValue();
+    }
   }
-});
+);
 
 const initialState = { user: null };
 

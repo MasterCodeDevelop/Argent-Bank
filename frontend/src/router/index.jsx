@@ -16,9 +16,7 @@ export default function Router() {
     { user } = useSelector((state) => state.user);
 
   React.useEffect(() => {
-    if (token) {
-      dispatch(updateUser({ token })).unwrap().then().catch();
-    }
+    if (token && !user) dispatch(updateUser({ token }));
   }, [token, user]);
 
   return (
