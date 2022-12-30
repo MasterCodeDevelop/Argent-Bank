@@ -7,10 +7,19 @@ import SignUp from '../pages/SignUp';
 import SignIn from '../pages/SignIn';
 import Profil from '../pages/Profil';
 import Error from '../pages/Error';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { updateUser } from '../slices/user';
 
 export default function Router() {
-  const { token } = useSelector((state) => state.auth);
+  const dispatch = useDispatch(),
+    { token } = useSelector((state) => state.auth),
+    { user } = useSelector((state) => state.user);
+
+  React.useEffect(() => {
+    if (token) {
+      dispatch(updateUser({ token })).unwrap().then().catch();
+    }
+  }, [token, user]);
 
   return (
     <BrowserRouter>
