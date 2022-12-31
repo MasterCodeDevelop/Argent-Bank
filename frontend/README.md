@@ -19,9 +19,19 @@
 
 If you would like to start the server with the JS node follow the [API](https://github.com/MasterCodeDevelop/MohamedAliElhamech_P13_27122022/tree/master/api) folder.
 
+
+
 ## Available Scripts
 
 In the project directory, you can run:
+
+### JSDocs
+
+You can see javascript documentation with `jsdoc` with the command ` npm run generate-docs`.
+This will build a root folder called `docs`.
+Child to see the page you must open the `index.html` page from the root of the `docs` folder on your browser.
+
+See the section about [jsdoc](https://www.npmjs.com/package/jsdoc) for more information.
 
 ### `npm start`
 
