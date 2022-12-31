@@ -12,9 +12,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../slices/auth';
 
 export default function Header() {
-  const { token } = useSelector((state) => state.auth);
-  const { user } = useSelector((state) => state.user);
-  const dispatch = useDispatch();
+  const dispatch = useDispatch(),
+    { token } = useSelector((state) => state.auth),
+    { user } = useSelector((state) => state.user);
 
   return (
     <header className="header">
@@ -25,7 +25,7 @@ export default function Header() {
       <nav className="header-nav">
         {token ? (
           <>
-            <NavLink to="./profil">
+            <NavLink to="./profile">
               <FontAwesomeIcon icon={faUser} /> {user ? user.firstName : ''}
             </NavLink>
             <Link to="/" onClick={() => dispatch(logout())}>

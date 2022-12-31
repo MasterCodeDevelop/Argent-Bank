@@ -19,16 +19,34 @@
   }
   &-nav {
     a {
+      position: relative;
       text-decoration: none;
-      margin-right: 0.5rem;
+      margin: 0 1.5rem;
       font-weight: bold;
-      color: inherit;
+      color: #283845cc;
       transition: all 0.5s;
+      svg {
+        position: absolute;
+        top: -30%;
+        left: -2rem;
+        height: 0.8rem;
+        padding: 0.5rem;
+        path {
+          color: #959ea7;
+        }
+      }
       &:hover {
         text-decoration: underline;
       }
       &.active {
-        color: #42b983;
+        color: #283845;
+        svg {
+          background-color: #dfe6ed;
+          border-radius: 50%;
+          path {
+            fill: #9eadba;
+          }
+        }
       }
     }
   }
