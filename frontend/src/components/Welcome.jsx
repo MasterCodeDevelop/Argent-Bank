@@ -39,7 +39,6 @@ function Welcome({ firstName, lastName }) {
   });
   const handleEdit = (formValue) => {
     const { firstName, lastName } = formValue;
-    console.log({ firstName, lastName });
 
     dispatch(updateUser({ token, firstName, lastName }))
       .unwrap()

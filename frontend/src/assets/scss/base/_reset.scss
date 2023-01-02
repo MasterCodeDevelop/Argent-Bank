@@ -22,3 +22,7 @@ html {
   width: 1px !important;
   white-space: nowrap !important; /* 3 */
 }
+main {
+  min-height: calc(100vh - 140px);
+  box-sizing: border-box;
+}
