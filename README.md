@@ -9,7 +9,7 @@
 ## 📖 Specifications
 
 ### ISSUE TEMPLATE
-[See the issues](https://github.com/MasterCodeDevelop/MohamedAliElhamech_P13_27122022/tree/master/.github/ISSUE_TEMPLATE)
+[See the issues](https://github.com/MasterCodeDevelop/MohamedAliElhamech_P13_27122022/tree/master/api/.github/ISSUE_TEMPLATE)
 * User can visit the home page
 * User can login to the system
 * User can log out of the system
@@ -23,7 +23,7 @@
 
 ## 📦 Articles provided for this project.
 - As a starting point, we have [static HTML and CSS](https://github.com/MasterCodeDevelop/MohamedAliElhamech_P13_27122022/tree/master/api/designs) for the home page, log in page and profile page.
-- [GitHub Issues templates](https://github.com/MasterCodeDevelop/MohamedAliElhamech_P13_27122022/tree/master/.github/ISSUE_TEMPLATE).
+- [GitHub Issues templates](https://github.com/MasterCodeDevelop/MohamedAliElhamech_P13_27122022/tree/master/api/.github/ISSUE_TEMPLATE).
 - The back end using NodeJS that you can find here [API](https://github.com/MasterCodeDevelop/MohamedAliElhamech_P13_27122022/tree/master/api).
 
 
