@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import * as userService from '../services/user.service';
-
 import { logout } from './auth';
+
 /**
  * get user data
  */
@@ -19,7 +19,7 @@ export const getUser = createAsyncThunk('user', async ({ token }, thunkAPI) => {
  * update user firstName and lastName
  */
 export const updateUser = createAsyncThunk(
-  'user',
+  'user/update',
   async ({ token, firstName, lastName }, thunkAPI) => {
     try {
       const data = await userService.updateUser(token, firstName, lastName);
@@ -48,6 +48,9 @@ const userSlice = createSlice({
       state.user = action.payload.user;
     },
     [updateUser.rejected]: (state) => {
+      state.user = null;
+    },
+    [logout.fulfilled]: (state) => {
       state.user = null;
     },
   },
